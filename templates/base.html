@@ -8,6 +8,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="header">
+            <a href="{{ url_for('list_contact') }}" class="home-link">🏠 Home</a>
+        </div>
         {% block main %}{% endblock %}
     </div>
 </body>

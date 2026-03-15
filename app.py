@@ -8,7 +8,7 @@ def get_db():
     return pymysql.connect(
         host = 'localhost',
         user = 'root',
-        password = ' PASSWORD',
+        password = '12345678',
         database = 'contact_db',
         charset = 'utf8mb4',
         cursorclass = pymysql.cursors.DictCursor
@@ -81,7 +81,21 @@ def delete_contact(contact_id):
     finally:
         conn.close()
     return redirect(url_for('list_contact'))
-            
+
+@app.route('/search')
+def search_contact():
+    search = request.args.get('search')
+    if not search:
+        return redirect(url_for('list_contact'))
+    
+    conn = get_db()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute('select * from contacts where name like %s or phone like %s', (f'%{search}%', f'%{search}%'))
+            contacts = cursor.fetchall()
+    finally:
+        conn.close()
+    return render_template('search_result.html', contacts = contacts)
 
 if __name__ == '__main__':
     app.run(debug=True)
