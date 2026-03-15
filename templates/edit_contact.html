@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Contact{% endblock %}
+
+{% block main %}
+<h1>✏️ Edit Contact</h1>
+<form action="/edit_contact/{{ contact.id }}" method="POST">
+    <div class="form-group">
+        <label>Name:</label>
+        <input type="text" name="name" class="form-control" value="{{ contact.name }}" required>
+    </div>
+    <div class="form-group">
+        <label>Phone Number:</label>
+        <input type="tel" name="phone" class="form-control" value="{{ contact.phone }}" required>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="add_save-btn">💾 Save Changes</button>
+        <a href="{{ url_for('list_contact') }}" class="cancel-link">↩️ Cancel</a>
+    </div>
+</form>
+{% endblock %}

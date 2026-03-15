@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Contacts List{% endblock %}
+
+{% block main %}
+<h1>My Contacts List</h1>
+        
+<a href="/add">
+    <button type="button" class="add_save-btn">+ ADD NEW CONTACT</button>
+</a>
+
+<table class="contact-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+        <tr>
+            <td class="td_data">{{ contact.name }}</td>
+            <td class="td_data">{{ contact.phone }}</td>
+            <td>
+                <a href="./edit/{{ contact.id }}">
+                    <button type="button" class="action-btn">✏️ EDIT</button>
+                </a>
+            </td>
+            <td>
+                <a href="./delete/{{ contact.id }}" onclick="return confirm('Are you sure to delete this contact?')">
+                    <button type="button" class="action-btn delete-btn">🗑️ DELETE</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
