@@ -1,29 +1,23 @@
-# 虛擬環境
 myweb_env/
 venv/
 env/
 
-# Python 快取
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# IDE 設定
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# 環境變數
 .env
 *.env
 
-# 資料庫（如果你之後用 SQLite）
 *.db
 *.sqlite
 *.sqlite3
 
-# 系統檔案
 .DS_Store
 Thumbs.db
