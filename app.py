@@ -8,7 +8,7 @@ def get_db():
     return pymysql.connect(
         host = 'localhost',
         user = 'root',
-        password = '12345678',
+        password = 'password',
         database = 'contact_db',
         charset = 'utf8mb4',
         cursorclass = pymysql.cursors.DictCursor
